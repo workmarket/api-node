@@ -4,17 +4,15 @@ var _ = require('underscore');
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 var BASE_URL = 'https://api.dev.workmarket.com/api/v1';
-var TOKEN = '';
-var SECRET = '';
+var TOKEN = 'W53IIPyKNP9CvHu6W0T6';
+var SECRET = 'UGpp9xHK0RW3vsn24DRTJ95UzulBNN8vIsVSa7RE';
 var ACCESS_TOKEN = '';
 
 var lastTimeStamp = Date.now();
 var pollingIntervalInMinutes = 0.1;
 
-refreshAccessToken(TOKEN, SECRET, function () {
-  var runner = setInterval(pollForUpdates, (pollingIntervalInMinutes * 1000 * 60));
-});
-
+var updateTokenRunner = setInterval(refreshAccessToken(TOKEN, SECRET), (1000 * 60 * 60 * 24));
+var updateRunner = setInterval(pollForUpdates, (pollingIntervalInMinutes * 1000 * 60));
 
 function refreshAccessToken(token, secret, callback) {
   request.post({
@@ -25,7 +23,9 @@ function refreshAccessToken(token, secret, callback) {
 
     if (!error && response.statusCode == 200) {
       ACCESS_TOKEN = apiResponse.response.access_token
-      callback();
+      if (callback) {
+        callback();
+      }
     } else {
       console.log(error);
     }

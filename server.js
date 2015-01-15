@@ -1,15 +1,13 @@
 var request = require('request');
 var _ = require('underscore');
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-
-var BASE_URL = 'https://api.dev.workmarket.com/api/v1';
-var TOKEN = 'W53IIPyKNP9CvHu6W0T6';
-var SECRET = 'UGpp9xHK0RW3vsn24DRTJ95UzulBNN8vIsVSa7RE';
+var BASE_URL = 'https://api.dev.workmarket.com/api/v1';  // Point to the environment you are using
+var TOKEN = 'jsbe5DesTUmPCAHR6tTy';  // Replace with your token
+var SECRET = 'VwozCZGwZAupaEZkmvpR2pybJZ7xNJHTMoY2Aq7G'; // Replace with your secret
 var ACCESS_TOKEN = '';
 
 var lastTimeStamp = Date.now();
-var pollingIntervalInMinutes = 0.1;
+var pollingIntervalInMinutes = 1;
 
 var updateTokenRunner = setInterval(refreshAccessToken(TOKEN, SECRET), (1000 * 60 * 60 * 24));
 var updateRunner = setInterval(pollForUpdates, (pollingIntervalInMinutes * 1000 * 60));

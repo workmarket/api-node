@@ -16,7 +16,7 @@ npm install
 Install & start [MongoDB](http://docs.mongodb.org/manual/installation/).  Call your database 'api-node' and leave the default port (27017).
 
 ##### Configuration
-Update server.js with your api.dev.workmarket.com (sandbox) API token & secret.  Then, start the service:
+Update server.js with your [api.dev.workmarket.com](api.dev.workmarket.com) API token & secret.  Then, start the service:
 
 ```
 node server.js

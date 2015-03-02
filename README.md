@@ -1,5 +1,5 @@
 ## api-node
-Interacting with the Work Market API using node.js
+Interacting with the Work Market API using [node.js](http://nodejs.org/) and [MongoDB](http://www.mongodb.org/).
 
 This simple service polls the assignments/list_updated endpoint for modified assignments.  If any are found, it fetches and prints the full details of that assignment, and stores the assignment into MongoDB.
 
